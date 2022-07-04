@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^habitat_files$
+^habitat_files/*$
+^doc$
+^Meta$
