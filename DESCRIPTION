@@ -30,3 +30,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/TH-habitat/Connect2
+BugReports: https://github.com/TH-habitat/Connect2/issues
