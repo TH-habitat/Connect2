@@ -1,0 +1,65 @@
+---
+title: "Example - Suitability, Habitat and Resistance"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Connect2)
+```
+
+# Focus Area: Ville De Nicolet
+
+In this example, we use the pre-processed data from the Ville de Nicolet project to estimate the 
+landscape suitability, habitat patches and resistance for different species.
+
+The pre-processed datasets needed includes: \n
+
+* ~10 spatial multiplier layers 
+* LULC layer
+
+*Note: A large part of the scripts were adapted/developed by Apex RMS and Kyle Martins
+
+## Load the example datasets
+```{r, eval=TRUE, class.source = 'fold-hide'}
+data("spatialMultipliers") #Spatial multipliers estimated for Nicolet
+data("landuse.r") #VNICO lulc layer
+
+names(spatialMultipliers)
+
+landuse.r
+
+```
+
+## Set the species of interest
+For a full list of species and species codes, load package data using -- data(SpeciesHabSuitLookup)
+and table 13 (name = species)
+
+```{r, eval=TRUE, class.source = 'fold-hide'}
+#Define the species codes
+spp=c("BLBR", "MAAM", "PLCI", "RASY", "CALA")
+
+```
+
+## Run the Suitability function 
+The function takes in the landuse layer, species and spatialMultipliers \n
+
+An optional parameter landuseLayer defines the reference landuse layer. Default value 
+for this parameter is "melcc_13"
+
+```{r, eval=TRUE, class.source = 'fold-hide'}
+#Calculate the landscape suitability index
+suitability=calcSuitability(landuse.r, spp, spatialMultipliers)
+
+suitability
+```
